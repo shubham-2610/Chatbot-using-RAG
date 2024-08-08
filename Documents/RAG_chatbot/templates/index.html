@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Q&A with Google Gemini</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>PDF Q&A with Google Gemini</h1>
+        <form method="post" enctype="multipart/form-data">
+            <label for="file">Choose a PDF file:</label>
+            <input type="file" name="file" id="file" required>
+            <br><br>
+            <label for="question">Enter your question:</label>
+            <textarea name="question" id="question" rows="4"></textarea>
+            <br><br>
+            <input type="submit" value="Get Answer">
+        </form>
+
+        {% if result %}
+            <div class="result">
+                <h2>Answer:</h2>
+                <p>{{ result }}</p>
+            </div>
+        {% endif %}
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
